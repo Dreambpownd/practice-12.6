@@ -134,7 +134,7 @@ function getPerfectPartner($surname, $name, $patronymic, $arr){
         echo getShortName($fullName). ' + ' .getShortName($randomSurNmPt) . ' =';
         echo "\n♡ Идеально на ".number_format(rand(5000, 10000) / 100, 2, '.', '')."% ♡";
     }else{
-        echo "Невозможно определить пол для подбора пары, введите другое имя";
+        echo "Невозможно определить пол для подбора пары, попробуйте другое имя";
     }
 };
 
