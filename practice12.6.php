@@ -125,16 +125,18 @@ function getGenderDescription($arr){
 function getPerfectPartner($surname, $name, $patronymic, $arr){
     $fullName = mb_convert_case(getFullnameFromParts($surname, $name, $patronymic), MB_CASE_TITLE, "UTF-8");
     $genderFirstPerson = getGenderFromName($fullName);
-    $g = 2;
+    if($genderFirstPerson != 0){
+        $g = 2;
         while ($g != 0){
             $randomSurNmPt = $arr[mt_rand(0, count($arr) -1)]['fullname'];
             $g = $genderFirstPerson + getGenderFromName($randomSurNmPt);
         }
-    echo getShortName($fullName). ' + ' .getShortName($randomSurNmPt) . ' =';
-    echo "\n♡ Идеально на ".number_format(rand(5000, 10000) / 100, 2, '.', '')."% ♡";
+        echo getShortName($fullName). ' + ' .getShortName($randomSurNmPt) . ' =';
+        echo "\n♡ Идеально на ".number_format(rand(5000, 10000) / 100, 2, '.', '')."% ♡";
+    }else{
+        echo "Невозможно определить пол для подбора пары, введите другое имя";
+    }
 };
 
 echo getGenderDescription($example_persons_array);
-echo getPerfectPartner('ивАНов','иВАн','ивАНЫч',$example_persons_array);
-
-
+echo getPerfectPartner('Бардо','Жаклин','Фёдоровна',$example_persons_array);
